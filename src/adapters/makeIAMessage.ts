@@ -1,7 +1,7 @@
 import { MESSAGE_TYPE } from '@/constants'
-import { BHLQuestResponse, BHLQuestMessege } from '@/types'
+import { BHLQuestResponse, BHLQuestMessage } from '@/types'
 
-export function makeIAMessage(response: BHLQuestResponse): BHLQuestMessege {
+export function makeIAMessage(response: BHLQuestResponse): BHLQuestMessage {
   return {
     type: MESSAGE_TYPE.IA,
     message: response.summary,
