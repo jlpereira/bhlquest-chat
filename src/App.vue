@@ -6,7 +6,10 @@
       v-if="messages.length"
       :messages="messages"
     />
-    <EmptyContainer v-else />
+    <EmptyContainer
+      v-else
+      @select="askBHL"
+    />
     <div
       v-if="isAsking"
       class="loading-request"

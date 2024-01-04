@@ -6,7 +6,7 @@
       <VCard
         v-for="example in ASK_EXAMPLES"
         :key="example"
-        @click="emit('select')"
+        @click="emit('select', example)"
       >
         {{ example }}
       </VCard>
@@ -35,7 +35,7 @@ const emit = defineEmits(['select'])
 
 .examples {
   display: grid;
-  grid-template-columns: 1ft 1ft;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   cursor: pointer;
 }
