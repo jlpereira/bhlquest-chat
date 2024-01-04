@@ -1,6 +1,7 @@
 <template>
   <div class="input-container">
     <textarea
+      ref="promptInput"
       class="prompt-field"
       type="text"
       v-model="message"
@@ -22,17 +23,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 
 interface Props {
   disabled: boolean
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+const emit = defineEmits(['submit'])
 
 const MAX_ROWS = 5
-
-const emit = defineEmits(['submit'])
+const promptInput = ref<HTMLElement>(null)
 const message = ref<string>('')
 
 const rows = computed(() => {
@@ -47,13 +48,23 @@ function submitPrompt() {
     message.value = ''
   }
 }
+
+watch(
+  () => props.disabled,
+  (newVal) => {
+    if (!newVal) {
+      nextTick(() => {
+        promptInput.value.focus()
+      })
+    }
+  }
+)
 </script>
 
 <style scoped>
 .input-container {
   display: flex;
   flex-direction: row;
-  items-align: center;
   padding: 2rem 0;
 }
 .prompt-field {
