@@ -1,8 +1,8 @@
 <template>
-  <div class="input-container">
+  <div class="flex flex-row pb-2 mb-2">
     <textarea
       ref="promptInput"
-      class="prompt-field"
+      class="p-4 rounded-l-xl border border-base-border w-full resize-none focus:outline-none"
       type="text"
       v-model="message"
       :rows="rows"
@@ -12,7 +12,7 @@
       @keydown.enter.exact.prevent="submitPrompt"
     />
     <button
-      class="btn-send"
+      class="btn-send bg-primary-color text-primary-text px-4 rounded-r-xl disabled:bg-gray-300 border-primary-color border disabled:border-gray-400"
       type="button"
       :disabled="disabled"
       @click="submitPrompt"
@@ -60,37 +60,3 @@ watch(
   }
 )
 </script>
-
-<style scoped>
-.input-container {
-  display: flex;
-  flex-direction: row;
-  padding: 2rem 0;
-}
-.prompt-field {
-  padding: 1rem;
-  width: 100%;
-  border: 1px solid #9ca3af;
-  border-radius: 0.9rem;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  font-size: 1rem;
-  resize: none;
-}
-
-.prompt-field:focus {
-  outline: none;
-}
-
-.btn-send {
-  border-radius: 0.9rem;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  color: white;
-  background: var(--primary-color);
-}
-
-.btn-send:disabled {
-  background: var(--btn-disabled-color);
-}
-</style>

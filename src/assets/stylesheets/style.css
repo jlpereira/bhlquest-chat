@@ -1,17 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  --primary-color: #0891b2;
-  --background-color: #ffffff
-  --text-color: #213547;
-  --border-color: #9ca3af;
-  --btn-disabled-color: #94a3b8;
-
-
+  --base-background-color: 255, 255, 255;
+  --base-border-color: 156, 163, 175;
+  --btn-disabled-color: 148, 163, 184;
+  --primary-color: 8, 145, 178;
+  --primary-text-color: 255, 255, 255;
+  --text-color: 33, 53, 71;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: --text-color;
-  background-color: --background-color;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -20,32 +19,11 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  color: --text-color;
 }
 
 #app {
-  max-width: 1280px;
-  width: 1280px;
-  margin: 0 auto;
+  width: 100%;
   height: 100vh;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
 }

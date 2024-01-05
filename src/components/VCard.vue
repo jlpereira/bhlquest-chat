@@ -1,15 +1,7 @@
 <template>
-  <div class="card">
+  <div class="border p-4 rounded-lg border-base-border">
     <slot />
   </div>
 </template>
 
 <script setup lang="ts"></script>
-
-<style>
-.card {
-  border: 1px solid var(--border-color);
-  padding: 1rem;
-  border-radius: 0.8rem;
-}
-</style>

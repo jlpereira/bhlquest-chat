@@ -1,11 +1,14 @@
 <template>
   <div>
-    <h2>Hello there!</h2>
-    <p>Ask a question about birds and see links to relevant BHL pages.</p>
-    <div class="examples">
+    <h2 class="text-2xl font-semibold mb-4">Hello there!</h2>
+    <p class="my-4">
+      Ask a question about birds and see links to relevant BHL pages.
+    </p>
+    <div class="grid grid-cols-2 gap-4">
       <VCard
         v-for="example in ASK_EXAMPLES"
         :key="example"
+        class="cursor-pointer"
         @click="emit('select', example)"
       >
         {{ example }}
@@ -26,17 +29,3 @@ const ASK_EXAMPLES = [
 
 const emit = defineEmits(['select'])
 </script>
-
-<style scoped>
-.card {
-  border: 1px solid var(--border-color);
-  padding: 1rem;
-}
-
-.examples {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  cursor: pointer;
-}
-</style>

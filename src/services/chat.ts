@@ -1,7 +1,7 @@
 import { makeRequest } from '@/utils'
 import { type AskParameters, type BHLQuestResponse } from '@/types'
 
-export class ChatBHL {
+export class BHLQuest {
   static ask(parameters: AskParameters): Promise<BHLQuestResponse> {
     const { question, ...rest } = parameters
 
