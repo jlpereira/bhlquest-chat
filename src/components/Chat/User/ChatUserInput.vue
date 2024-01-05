@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row pb-2 mb-2">
+  <div class="flex flex-row pb-8">
     <textarea
       ref="promptInput"
       class="p-4 rounded-l-xl border border-base-border w-full resize-none focus:outline-none"
