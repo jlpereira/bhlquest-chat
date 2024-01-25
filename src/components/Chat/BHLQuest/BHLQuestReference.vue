@@ -20,14 +20,17 @@
         target="_blank"
         class="text-primary-color break-all"
       >
-        {{ reference.link }}
+        {{ reference.title }}
       </a>
     </div>
     <div
       v-if="isExpanded"
       class="mt-2"
     >
-      <BHLViewer :page-ids="pageIds" />
+      <ImageViewer
+        :page-ids="reference.pages"
+        :page-index="reference.pageIndex"
+      />
     </div>
   </div>
 </template>
@@ -37,7 +40,7 @@ import { ref, computed } from 'vue'
 import { BHLQuestMessageReference } from '@/types'
 import IconChevronLeft from '@/components/Icon/IconChevronLeft.vue'
 import IconChevronDown from '@/components/Icon/IconChevronDown.vue'
-import BHLViewer from '@/components/BHL/BHLViewer.vue'
+import ImageViewer from '@/components/ImageViewer/ImageViewer.vue'
 
 interface Props {
   index: number
@@ -47,12 +50,4 @@ interface Props {
 const props = defineProps<Props>()
 
 const isExpanded = ref(false)
-const pageIds = computed<number[]>(() => {
-  const { pageEndId, pageStartId } = props.reference
-
-  return Array.from(
-    { length: pageEndId - pageStartId + 1 },
-    (_, index) => pageStartId + index
-  )
-})
 </script>

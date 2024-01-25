@@ -15,10 +15,13 @@ type Metadata = {
 type Result = {
   chunkId: number
   itemId: number
-  pageStart: number
-  pageEnd: number
+  pageId: number
+  pageIndex: number
+  pages: number[]
   score: number
   crossScore: number
   outlink: string
-  text: string
+  text: string[]
+  reference: string
+  language: string
 }

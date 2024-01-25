@@ -6,16 +6,19 @@
       :is="components[message.type]"
       :message="message"
     />
+    <LoadingMessage v-if="isLoading" />
   </div>
 </template>
 
 <script setup lang="ts">
 import ChatUserMessage from './User/ChatUserMessage.vue'
-import ChatIAMessage from './AI/ChatAIMessage.vue'
+import ChatIAMessage from './BHLQuest/BHLQuestMessage.vue'
+import LoadingMessage from './LoadingMessage.vue'
 import { MESSAGE_TYPE } from '@/constants'
 
 type Props = {
   messages: any[]
+  isLoading: boolean
 }
 
 const components = {

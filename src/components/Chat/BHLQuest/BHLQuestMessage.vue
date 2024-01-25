@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { BHLQuestMessage } from '@/types'
-import ChatAIReference from './ChatAIReference.vue'
+import ChatAIReference from './BHLQuestReference.vue'
 
 type Props = {
   message: BHLQuestMessage
