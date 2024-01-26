@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="flex gap-2 items-center">
+    <div
+      ref="referenceRef"
+      class="flex gap-2 items-center"
+    >
       <button
         type="button"
         class="rounded-full bg-primary-color text-primary-text p-1.5"
@@ -36,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 import { BHLQuestMessageReference } from '@/types'
 import IconChevronLeft from '@/components/Icon/IconChevronLeft.vue'
 import IconChevronDown from '@/components/Icon/IconChevronDown.vue'
@@ -48,6 +51,15 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const referenceRef = ref<HTMLElement | null>(null)
 
 const isExpanded = ref(false)
+
+watch(isExpanded, () => {
+  if (isExpanded) {
+    nextTick(() => {
+      referenceRef.value?.scrollIntoView()
+    })
+  }
+})
 </script>
