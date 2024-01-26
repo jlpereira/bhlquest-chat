@@ -2,7 +2,7 @@
   <div class="relative z-0 flex h-full w-full overflow-hidden">
     <PanelSettings />
     <div class="flex flex-col h-full justify-between w-full">
-      <div class="w-full bg-secondary-color">
+      <div class="w-full">
         <Navbar />
       </div>
       <div
