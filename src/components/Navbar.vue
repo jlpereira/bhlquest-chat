@@ -3,9 +3,9 @@
     class="max-w-7xl container mx-auto flex justify-between items-center px-4"
   >
     <h1
-      class="text-4xl py-4 font-semibold bg-gradient-to-r from-[#4679a4] to-primary-color bg-clip-text text-transparent"
+      class="text-3xl py-4 font-semibold bg-gradient-to-r from-[#4679a4] to-primary-color bg-clip-text text-transparent"
     >
-      BHL Quest <span class="text-[#ffd3a8]">AI</span>
+      BHL Quest <span class="text-[#ffc081]">AI</span>
     </h1>
     <button
       type="button"

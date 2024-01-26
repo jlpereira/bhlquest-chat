@@ -4,11 +4,11 @@
     class="h-screen w-96 text-white bg-zinc-700 bg-opacity-100 transform translate-x-0 transition-transform duration-300 ease-in-out"
   >
     <div class="border-b border-zinc-500">
-      <h1 class="text-2xl py-5 px-6">Settings</h1>
+      <h1 class="text-xl py-5 px-6">Settings</h1>
     </div>
     <div class="px-6 py-4">
       <div class="mb-6">
-        <h2 class="text-lg font-bold my-2">Chat</h2>
+        <h2 class="text-lg font-semibold my-2">Chat</h2>
         <ul>
           <li>
             <label>
@@ -22,7 +22,7 @@
         </ul>
       </div>
       <div class="mb-6">
-        <h2 class="text-lg font-bold my-2">References</h2>
+        <h2 class="text-lg font-semibold my-2">References</h2>
         <ul>
           <li>
             <label>
@@ -45,7 +45,7 @@
         </ul>
       </div>
       <div class="mb-4">
-        <h2 class="text-lg font-bold my-2">Request</h2>
+        <h2 class="text-lg font-semibold my-2">Request</h2>
         <SettingMaxRecords v-model="parameters.maxResults" />
         <SettingScoreThreshold v-model="parameters.scoreThreshold" />
       </div>
