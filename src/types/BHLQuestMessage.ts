@@ -6,7 +6,12 @@ export type BHLQuestMessageReference = {
   title: string
   pageIndex: number
   pageId: number
-  pages: number[]
+  pages: Page[]
+}
+
+type Page = {
+  id: number
+  pageNumber: number
 }
 
 export type BHLQuestMessage = ChatMessage & {

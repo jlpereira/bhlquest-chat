@@ -10,15 +10,19 @@ export function makeIAMessage(response: BHLQuestResponse): BHLQuestMessage {
     type: MESSAGE_TYPE.IA,
     text: response.summary,
     date: +new Date(),
-    references: response.results.map(
-      (item): BHLQuestMessageReference => ({
-        link: item.outlink,
-        text: item.text,
-        title: item.reference,
-        pageId: item.pageId,
-        pageIndex: item.pageIndex,
-        pages: item.pages
-      })
+    references: response.results?.map(
+      (item): BHLQuestMessageReference =>
+        ({
+          link: item.outlink,
+          text: item.text,
+          title: item.reference,
+          pageId: item.pageId,
+          pageIndex: item.pageIndex,
+          pages: item.pages.map((item) => ({
+            id: item.id,
+            pageNumber: item.pageSeq
+          }))
+        } || [])
     )
   }
 }

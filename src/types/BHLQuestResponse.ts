@@ -12,12 +12,17 @@ type Metadata = {
   version: string
 }
 
+type Page = {
+  id: number
+  pageSeq: number
+}
+
 type Result = {
   chunkId: number
   itemId: number
   pageId: number
   pageIndex: number
-  pages: number[]
+  pages: Page[]
   score: number
   crossScore: number
   outlink: string

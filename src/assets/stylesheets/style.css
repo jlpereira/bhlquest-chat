@@ -4,9 +4,11 @@
   --base-background-color: 255, 255, 255;
   --base-border-color: 156, 163, 175;
   --btn-disabled-color: 148, 163, 184;
-  --primary-color: 8, 145, 178;
+  --primary-color: 61, 144, 200;
   --primary-text-color: 255, 255, 255;
+  --secondary-color: 246, 237, 226;
   --text-color: 33, 53, 71;
+  --text-highlight-color: 241, 228, 215;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

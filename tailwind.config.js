@@ -16,11 +16,11 @@ export default {
       fontFamily: {
         main: [
           'Inter',
-          'system - ui',
+          'system-ui',
           'Avenir',
           'Helvetica',
           'Arial',
-          'sans - serif'
+          'sans-serif'
         ]
       },
       colors: {
@@ -32,6 +32,11 @@ export default {
         primary: {
           color: withOpacity('--primary-color'),
           text: withOpacity('--primary-text-color')
+        },
+
+        secondary: {
+          color: withOpacity('--secondary-color'),
+          text: withOpacity('--secondary-text-color')
         }
       }
     }

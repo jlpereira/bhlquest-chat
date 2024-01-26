@@ -26,21 +26,43 @@
         {{ reference.title }}
       </a>
     </div>
-    <div
-      v-if="isExpanded"
-      class="mt-2"
-    >
-      <ImageViewer
-        :page-ids="reference.pages"
-        :page-index="reference.pageIndex"
-      />
-    </div>
+    <template v-if="isExpanded">
+      <div
+        v-for="(text, index) in reference.text"
+        class="py-4 px-8"
+      >
+        <a
+          class="text-primary-color"
+          :href="`https://www.biodiversitylibrary.org/page/${
+            reference.pages[reference.pageIndex + index].id
+          }`"
+          >Page #{{
+            reference.pages[reference.pageIndex + index].pageNumber
+          }}</a
+        >
+        <component
+          :is="textComponent"
+          class="text-wrap font-main"
+          v-html="text.trim()"
+        />
+      </div>
+      <div
+        v-if="isImageViewerVisible"
+        class="mt-2"
+      >
+        <ImageViewer
+          :page-ids="reference.pages"
+          :page-index="reference.pageIndex"
+        />
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue'
+import { nextTick, ref, watch, computed } from 'vue'
 import { BHLQuestMessageReference } from '@/types'
+import { useSettings } from '@/store'
 import IconChevronLeft from '@/components/Icon/IconChevronLeft.vue'
 import IconChevronDown from '@/components/Icon/IconChevronDown.vue'
 import ImageViewer from '@/components/ImageViewer/ImageViewer.vue'
@@ -52,9 +74,14 @@ interface Props {
 
 const props = defineProps<Props>()
 const referenceRef = ref<HTMLElement | null>(null)
+const { referencePreformattedText, referenceExpanded } = useSettings()
 
-const isExpanded = ref(false)
+const textComponent = computed(() =>
+  referencePreformattedText.value ? 'pre' : 'p'
+)
 
+const isExpanded = ref(true)
+const isImageViewerVisible = ref(false)
 watch(isExpanded, () => {
   if (isExpanded) {
     nextTick(() => {
@@ -62,4 +89,14 @@ watch(isExpanded, () => {
     })
   }
 })
+
+watch(referenceExpanded, (newVal) => {
+  isExpanded.value = newVal
+})
 </script>
+
+<style>
+em {
+  background-color: rgb(var(--text-highlight-color));
+}
+</style>
