@@ -2,9 +2,9 @@
   <div>
     <div class="font-bold text-lg text-primary-color">BHL Quest</div>
     <div
-      v-if="message.text"
+      v-if="message.summary"
       class="whitespace-pre-wrap"
-      v-html="message.text"
+      v-html="message.summary"
     />
     <div v-else>I cannot provide an answer to your question.</div>
     <template v-if="message.references">

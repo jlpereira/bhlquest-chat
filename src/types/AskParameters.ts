@@ -1,6 +1,5 @@
 export type AskParameters = {
-  question: string
+  ask: string
   maxResults?: number
   scoreThreshold?: number
-  withText?: boolean
 }

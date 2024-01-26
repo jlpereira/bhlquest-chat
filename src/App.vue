@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { defineOptions, ref, nextTick, onBeforeMount } from 'vue'
-import { makeIAMessage, makeUserMessage } from '@/adapters'
+import { makeIAMessage, makeUserMessage, makeAskPayload } from '@/adapters'
 import { BHLQuest } from './services'
 import { MESSAGE_TYPE } from './constants'
 import { useSettings } from './store'
@@ -42,6 +42,7 @@ import ChatView from '@/components/Chat/ChatView.vue'
 import UserInput from '@/components/Chat/User/ChatUserInput.vue'
 import Navbar from '@/components/Navbar.vue'
 import PanelSettings from '@/components/Setting/PanelSettings.vue'
+
 defineOptions({
   name: 'ChatBHL'
 })
@@ -52,7 +53,10 @@ const chatContainer = ref<HTMLElement | null>(null)
 const { keepChat, parameters } = useSettings()
 
 async function askBHL(question: string) {
-  const userMessage = makeUserMessage(question)
+  const userMessage = makeUserMessage({
+    ask: question,
+    ...parameters.value
+  })
 
   messages.value = keepChat.value
     ? [...messages.value, userMessage]
@@ -63,15 +67,16 @@ async function askBHL(question: string) {
   isAsking.value = true
 
   try {
-    const response = await BHLQuest.ask({ question, ...parameters.value })
+    const payload = makeAskPayload(userMessage.parameters)
+    const response = await BHLQuest.ask(payload)
 
     messages.value.push(makeIAMessage(response))
     nextTick(scrollToBottom)
-    isAsking.value = false
   } catch (e) {
-    isAsking.value = false
     console.log(e)
   }
+
+  isAsking.value = false
 }
 
 function scrollToBottom() {
@@ -88,8 +93,19 @@ function scrollToBottom() {
 
 onBeforeMount(() => {
   const queryString = window.location.search
-  const parameters = new URLSearchParams(queryString)
-  const ask = parameters.get('ask')
+  const urlParameters = new URLSearchParams(queryString)
+  const ask = urlParameters.get('ask')
+
+  const threshold = urlParameters.get('scoreThreshold')
+  const maxResults = urlParameters.get('maxResults')
+
+  if (maxResults) {
+    parameters.value.maxResults = +maxResults
+  }
+
+  if (threshold) {
+    parameters.value.scoreThreshold = +threshold
+  }
 
   if (ask) {
     askBHL(ask)

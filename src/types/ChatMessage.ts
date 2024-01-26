@@ -1,5 +1,10 @@
+import { AskParameters } from '.'
+
 export type ChatMessage = {
   date: number
-  text: string
   type: string
+}
+
+export type UserChatMessage = ChatMessage & {
+  parameters: AskParameters
 }

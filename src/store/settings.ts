@@ -1,19 +1,7 @@
 import { reactive, toRefs } from 'vue'
+import { StoreSettings } from '@/types'
 
-type RequestParameters = {
-  maxResults: number
-  scoreThreshold: number
-}
-
-type State = {
-  keepChat: boolean
-  referenceExpanded: boolean
-  openSettings: boolean
-  referencePreformattedText: boolean
-  parameters: RequestParameters
-}
-
-const state = reactive<State>({
+const state = reactive<StoreSettings>({
   keepChat: false,
   openSettings: true,
   referenceExpanded: true,

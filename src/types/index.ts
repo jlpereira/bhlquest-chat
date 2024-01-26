@@ -1,4 +1,6 @@
 export * from './AskParameters'
+export * from './AskParametersPayload'
 export * from './BHLQuestMessage'
 export * from './BHLQuestResponse'
 export * from './ChatMessage'
+export * from './StoreSettings'

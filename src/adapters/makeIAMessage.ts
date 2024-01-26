@@ -8,7 +8,7 @@ import {
 export function makeIAMessage(response: BHLQuestResponse): BHLQuestMessage {
   return {
     type: MESSAGE_TYPE.IA,
-    text: response.summary,
+    summary: response.summary,
     date: +new Date(),
     references: response.results?.map(
       (item): BHLQuestMessageReference =>

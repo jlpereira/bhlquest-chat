@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch, computed } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { BHLQuestMessageReference } from '@/types'
 import { useSettings } from '@/store'
 import IconChevronLeft from '@/components/Icon/IconChevronLeft.vue'
@@ -72,7 +72,7 @@ interface Props {
   reference: BHLQuestMessageReference
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 const referenceRef = ref<HTMLElement | null>(null)
 const { referencePreformattedText, referenceExpanded } = useSettings()
 
@@ -82,17 +82,14 @@ const textComponent = computed(() =>
 
 const isExpanded = ref(true)
 const isImageViewerVisible = ref(false)
-watch(isExpanded, () => {
-  if (isExpanded) {
-    nextTick(() => {
-      referenceRef.value?.scrollIntoView()
-    })
-  }
-})
 
-watch(referenceExpanded, (newVal) => {
-  isExpanded.value = newVal
-})
+watch(
+  referenceExpanded,
+  (newVal) => {
+    isExpanded.value = newVal
+  },
+  { immediate: true }
+)
 </script>
 
 <style>

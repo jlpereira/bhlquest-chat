@@ -1,10 +1,10 @@
 import { MESSAGE_TYPE } from '@/constants'
-import { ChatMessage } from '@/types'
+import { AskParameters, UserChatMessage } from '@/types'
 
-export function makeUserMessage(message: string): ChatMessage {
+export function makeUserMessage(parameters: AskParameters): UserChatMessage {
   return {
     type: MESSAGE_TYPE.User,
-    text: message,
-    date: +new Date()
+    date: +new Date(),
+    parameters
   }
 }

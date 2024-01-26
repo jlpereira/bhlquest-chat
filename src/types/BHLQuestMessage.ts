@@ -15,5 +15,6 @@ type Page = {
 }
 
 export type BHLQuestMessage = ChatMessage & {
+  summary: string
   references: BHLQuestMessageReference[]
 }

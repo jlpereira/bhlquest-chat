@@ -10,8 +10,8 @@ function makeUrlParameters(
 ): string {
   const urlParameters = new URL(url)
   if (parameters) {
-    Object.entries(parameters).forEach(([clave, valor]) => {
-      urlParameters.searchParams.append(clave, valor.toString())
+    Object.entries(parameters).forEach(([key, value]) => {
+      urlParameters.searchParams.append(key, value.toString())
     })
   }
 
