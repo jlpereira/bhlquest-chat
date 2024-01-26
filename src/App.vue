@@ -7,7 +7,7 @@
       </div>
       <div
         ref="chatContainer"
-        class="overflow-y-auto h-full border-t scroll scrollbar-gutter-stable"
+        class="overflow-y-auto h-full border-t border-gray-300 scroll scrollbar-gutter-stable"
       >
         <ChatView
           class="max-w-7xl container mx-auto px-6 py-4"
