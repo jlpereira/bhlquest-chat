@@ -14,7 +14,7 @@ type Metadata = {
 
 type Page = {
   id: number
-  pageSeq: number
+  pageNum: number
 }
 
 type Result = {

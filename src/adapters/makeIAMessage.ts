@@ -20,7 +20,7 @@ export function makeIAMessage(response: BHLQuestResponse): BHLQuestMessage {
           pageIndex: item.pageIndex,
           pages: item.pages.map((item) => ({
             id: item.id,
-            pageNumber: item.pageSeq
+            pageNumber: item.pageNum
           }))
         } || [])
     )
