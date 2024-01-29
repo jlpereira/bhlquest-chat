@@ -18,9 +18,14 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import IconSettings from '@/components/Icon/IconSettings.vue'
 import { useSettings } from '@/store'
 
+const MAX_MOBILE_WIDTH = 640
 const { openSettings } = useSettings()
+
+if (window.innerWidth < MAX_MOBILE_WIDTH) {
+  openSettings.value = false
+}
 </script>

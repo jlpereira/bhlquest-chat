@@ -43,7 +43,7 @@
         <component
           :is="textComponent"
           class="text-wrap font-main"
-          v-html="text.trim()"
+          v-html="parseOCRText(text)"
         />
       </div>
       <div
@@ -82,6 +82,10 @@ const textComponent = computed(() =>
 
 const isExpanded = ref(true)
 const isImageViewerVisible = ref(false)
+
+function parseOCRText(text: string) {
+  return text.replaceAll('\r\r', '\r').trim()
+}
 
 watch(
   referenceExpanded,

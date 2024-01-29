@@ -1,10 +1,16 @@
 <template>
   <div
     v-if="openSettings"
-    class="h-screen w-96 text-white bg-zinc-700 bg-opacity-100 transform translate-x-0 transition-transform duration-300 ease-in-out"
+    class="h-screen w-full fixed sm:relative sm:w-96 text-white bg-zinc-700 bg-opacity-100 transform translate-x-0 transition-transform duration-300 ease-in-out"
   >
-    <div class="border-b border-zinc-500">
-      <h1 class="text-xl py-5 px-6">Settings</h1>
+    <div
+      class="border-b border-zinc-500 flex justify-between items-center py-5 px-6"
+    >
+      <h1 class="text-xl">Settings</h1>
+      <IconClose
+        class="w-6 h-6 text-white sm:hidden"
+        @click="() => (openSettings = false)"
+      />
     </div>
     <div class="px-6 py-4">
       <div class="mb-6">
@@ -57,6 +63,7 @@
 import { useSettings } from '@/store'
 import SettingScoreThreshold from './SettingScoreThreshold.vue'
 import SettingMaxRecords from './SettingMaxResults.vue'
+import IconClose from '../Icon/IconClose.vue'
 
 const {
   keepChat,
