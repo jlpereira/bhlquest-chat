@@ -14,9 +14,10 @@ export function makeIAMessage(response: BHLQuestResponse): BHLQuestMessage {
       (item): BHLQuestMessageReference =>
         ({
           link: item.outlink,
+          pageId: item.pageId,
+          score: item.score,
           text: item.text,
           title: item.reference,
-          pageId: item.pageId,
           pageIndex: item.pageIndex,
           pages: item.pages.map((item) => ({
             id: item.id,

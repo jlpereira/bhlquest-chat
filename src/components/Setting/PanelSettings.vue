@@ -39,6 +39,7 @@
               Expand
             </label>
           </li>
+
           <li>
             <label>
               <input
@@ -46,6 +47,16 @@
                 v-model="referencePreformattedText"
               />
               Preformatted text
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                v-model="referenceScore"
+              />
+              Score
             </label>
           </li>
         </ul>
@@ -70,6 +81,7 @@ const {
   openSettings,
   referenceExpanded,
   referencePreformattedText,
+  referenceScore,
   parameters
 } = useSettings()
 </script>

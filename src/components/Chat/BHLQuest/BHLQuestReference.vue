@@ -24,6 +24,12 @@
         class="text-primary-color break-all"
       >
         {{ reference.title }}
+        <p
+          v-if="referenceScore"
+          class="text-sm text-gray-500"
+        >
+          Score {{ reference.score.toFixed(4) }}
+        </p>
       </a>
     </div>
     <template v-if="isExpanded">
@@ -46,15 +52,6 @@
           v-html="parseOCRText(text)"
         />
       </div>
-      <div
-        v-if="isImageViewerVisible"
-        class="mt-2"
-      >
-        <ImageViewer
-          :page-ids="reference.pages"
-          :page-index="reference.pageIndex"
-        />
-      </div>
     </template>
   </div>
 </template>
@@ -65,7 +62,6 @@ import { BHLQuestMessageReference } from '@/types'
 import { useSettings } from '@/store'
 import IconChevronLeft from '@/components/Icon/IconChevronLeft.vue'
 import IconChevronDown from '@/components/Icon/IconChevronDown.vue'
-import ImageViewer from '@/components/ImageViewer/ImageViewer.vue'
 
 interface Props {
   index: number
@@ -74,23 +70,19 @@ interface Props {
 
 defineProps<Props>()
 const referenceRef = ref<HTMLElement | null>(null)
-const { referencePreformattedText, referenceExpanded } = useSettings()
+const { referencePreformattedText, referenceExpanded, referenceScore } =
+  useSettings()
 
 const textComponent = computed(() =>
   referencePreformattedText.value ? 'pre' : 'p'
 )
-
 const isExpanded = ref(true)
-const isImageViewerVisible = ref(false)
 
 function parseOCRText(text: string) {
-  return (
-    text
-      //.replaceAll('\r\r', '\r')
-      .replace(/(\r?\r){2,}/g, '')
-      .replace(/(\r\n)+/g, '\r\n')
-      .trim()
-  )
+  return text
+    .replace(/(\r?\r){2,}/g, '')
+    .replace(/(\r\n)+/g, '\r\n')
+    .trim()
 }
 
 watch(

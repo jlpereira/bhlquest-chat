@@ -1,8 +1,9 @@
 export type StoreSettings = {
   keepChat: boolean
-  referenceExpanded: boolean
   openSettings: boolean
+  referenceExpanded: boolean
   referencePreformattedText: boolean
+  referenceScore: boolean
   parameters: RequestParameters
 }
 

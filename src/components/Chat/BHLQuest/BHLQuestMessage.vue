@@ -8,14 +8,14 @@
     />
     <div v-else>I cannot provide an answer to your question.</div>
     <template v-if="message.references">
-      <h3 class="my-2 font-semibold">References</h3>
+      <h3 class="mt-4 font-semibold text-lg">References</h3>
       <ul>
         <li
           v-for="(reference, index) in message.references"
           :key="message.date"
           class="my-2"
         >
-          <ChatAIReference
+          <BHLQuestReference
             :reference="reference"
             :index="index"
           />
@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { BHLQuestMessage } from '@/types'
-import ChatAIReference from './BHLQuestReference.vue'
+import BHLQuestReference from './BHLQuestReference.vue'
 
 type Props = {
   message: BHLQuestMessage
